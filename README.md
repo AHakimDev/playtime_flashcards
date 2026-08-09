@@ -1,17 +1,63 @@
-# playtime_flashcards
+# 🌟 Play Time Flashcards
 
-A kids flashcards
+**Play Time Flashcards** یک اپلیکیشن آموزشی شاد و تعاملی است که برای آموزش کلمات پایه انگلیسی به کودکان طراحی شده است. این برنامه با تمرکز بر یادگیری بصری و صوتی، محیطی جذاب برای شروع یادگیری زبان فراهم می‌کند.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## ✨ ویژگی‌های کلیدی
 
-A few resources to get you started if this is your first Flutter project:
+*   **📚 انتخاب کتاب:** شامل دو سطح آموزشی استاندارد (Play Time A و Play Time B).
+*   **🗂 دسته‌بندی هوشمند:** فلش‌کارت‌ها در دسته‌های کاربردی مانند میوه‌ها، حیوانات، رنگ‌ها، لباس‌ها، اعداد و افعال تقسیم شده‌اند.
+*   **🔄 کارت‌های تعاملی (Flip Cards):** با لمس هر کارت، انیمیشن چرخش اجرا شده و معادل فارسی و انگلیسی کلمه نمایش داده می‌شود.
+*   **🔊 تلفظ صوتی (TTS):** استفاده از تکنولوژی Text-to-Speech برای پخش تلفظ صحیح کلمات با لهجه Native (فشرده‌سازی روی `en-US`).
+*   **🎨 طراحی مدرن:** استفاده از اصول Glassmorphism و رنگ‌های پاستلی شاد برای جذب کودکان.
+*   **📱 کاملاً Adaptive:** پشتیبانی کامل از انواع سایزهای صفحه (موبایل، تبلت و وب).
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🏗 معماری و استانداردهای فنی
+
+این پروژه با رعایت بالاترین استانداردهای روز دنیای فلاتر و اندروید پیاده‌سازی شده است:
+
+*   **UI Framework:** Flutter (Material 3)
+*   **State Management:** Stateless/Stateful Widgets (پایه)
+*   **Android Standards:** 
+    *   Kotlin DSL (`.kts`)
+    *   Gradle `8.11.1`
+    *   Kotlin `2.2.20`
+*   **Design Pattern:** معماری تمیز (Clean Structure) برای مدیریت داده‌ها و ویجت‌ها.
+*   **Safety:** رعایت کامل `SafeArea` و مدیریت نوار وضعیت سیستم.
+
+---
+
+## 🛠 ابزارهای استفاده شده
+
+*   [`flutter_tts`](https://pub.dev/packages/flutter_tts): برای موتور صوتی.
+*   [`flutter_native_splash`](https://pub.dev/packages/flutter_native_splash): مدیریت صفحه انتظار.
+
+---
+
+## 🚀 نحوه اجرا
+
+۱. ابتدا پیش‌نیازهای فلاتر را روی سیستم خود نصب کنید.
+۲. مخزن را کلون کنید:
+   ```bash
+   git clone https://github.com/AHakimDev/playtime_flashcards.git
+   ```
+۳. پکیج‌ها را دریافت کنید:
+   ```bash
+   flutter pub get
+   ```
+۴. برنامه را اجرا کنید:
+   ```bash
+   flutter run
+   ```
+
+---
+
+## 📝 یادداشت توسعه‌دهنده
+
+این پروژه بخشی از اکوسیستم آموزشی **Gene** است و با هدف ارتقای استانداردهای یادگیری زبان برای کودکان توسعه یافته است.
+
+---
+**توسعه داده شده توسط AHakimDev** 🌟
