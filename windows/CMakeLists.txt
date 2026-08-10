@@ -4,7 +4,7 @@ project(playtime_flashcards LANGUAGES CXX)
 
 # The name of the executable created for the application. Change this to change
 # the on-disk name of your application.
-set(BINARY_NAME "playtime_flashcards")
+set(BINARY_NAME "pt_cards")
 
 # Explicitly opt in to modern CMake behaviors to avoid warnings with recent
 # versions of CMake.

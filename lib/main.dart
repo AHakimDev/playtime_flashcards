@@ -1,16 +1,40 @@
+import 'package:flutter/foundation.dart'; // 🟢 اضافه شد برای تشخیص وب
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; // 🟢 اضافه شدن پکیج سرویس‌ها برای کنترل دیوایس
+import 'package:flutter/services.dart';
+import 'package:window_manager/window_manager.dart';
 import 'screens/book_selection_screen.dart';
 
+// 🟢 استفاده از شرط بومی برای جلوگیری از خطای وب
+import 'dart:io' show Platform;
+
 void main() async {
-  // 🟢 اطمینان از مقداردهی اولیه فلاتر قبل از اعمال تنظیمات سیستمی
   WidgetsFlutterBinding.ensureInitialized();
 
-  // 🟢 قفل کردن جهت صفحه فقط روی حالت عمودی (بالا و پایین)
-  await SystemChrome.setPreferredOrientations([
-    DeviceOrientation.portraitUp,
-    DeviceOrientation.portraitDown,
-  ]);
+  // 🟢 تنظیمات دسکتاپ - فقط اگر در وب نباشیم اجرا شود
+  if (!kIsWeb && (Platform.isWindows || Platform.isMacOS || Platform.isLinux)) {
+    await windowManager.ensureInitialized();
+    WindowOptions windowOptions = const WindowOptions(
+      size: Size(960, 600),
+      minimumSize: Size(800, 550),
+      center: true,
+      backgroundColor: Colors.transparent,
+      skipTaskbar: false,
+      titleBarStyle: TitleBarStyle.normal,
+      title: 'PT Cards',
+    );
+    await windowManager.waitUntilReadyToShow(windowOptions, () async {
+      await windowManager.show();
+      await windowManager.focus();
+    });
+  }
+
+  // 🟢 تنظیم جهت صفحه برای موبایل
+  if (!kIsWeb) {
+    await SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
+  }
 
   runApp(const KidsFlashcardApp());
 }
@@ -21,20 +45,25 @@ class KidsFlashcardApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'PT Cards', // 🟢 تغییر نام به اسم جدید و یکپارچه
+      title: 'PT Cards',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        // 🟢 تنظیم فونت پایه برای کل اپلیکیشن (اولویت با Vazirmatn)
+        fontFamily: 'Vazirmatn',
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.orangeAccent),
         useMaterial3: true,
         scaffoldBackgroundColor: const Color(0xFFF0F8FF),
-        // 🟢 تنظیم سراسری اپ‌بار و نوار وضعیت برای تمام صفحات
+
         appBarTheme: const AppBarTheme(
-          systemOverlayStyle: SystemUiOverlayStyle.dark, // سیاه کردن آیکون‌های باتری و ساعت
+          toolbarHeight: 72, // 🟢 افزایش ارتفاع برای فاصله گرفتن از لبه بالای ویندوز
+          systemOverlayStyle: SystemUiOverlayStyle.dark,
           backgroundColor: Colors.transparent,
           elevation: 0,
           centerTitle: true,
-          iconTheme: IconThemeData(color: Colors.blueGrey), // رنگ فلش برگشت
+          iconTheme: const IconThemeData(color: Colors.blueGrey),
+          // 🟢 بهینه‌سازی فونت برای متون ترکیبی فارسی و انگلیسی
           titleTextStyle: TextStyle(
+            fontFamily: 'Vazirmatn',
             color: Colors.blueGrey,
             fontSize: 22,
             fontWeight: FontWeight.bold,

@@ -63,10 +63,10 @@ final List<FlashcardModel> allFlashcards = [
   // اشیا و متفرقه (Level A)
   const FlashcardModel(id: 'a46', level: BookLevel.levelA, category: CardCategory.objects, imageAssetPath: 'assets/images/level_a/melody.webp', word: 'Melody', persianWord: 'ملودی'),
   const FlashcardModel(id: 'a47', level: BookLevel.levelA, category: CardCategory.objects, imageAssetPath: 'assets/images/level_a/present.webp', word: 'Present', persianWord: 'هدیه'),
-  const FlashcardModel(id: 'a48', level: BookLevel.levelA, category: CardCategory.objects, imageAssetPath: 'assets/images/level_a/rocket.webp', word: 'Rocket', persianWord: 'موشک'),
+  const FlashcardModel(id: 'a48', level: BookLevel.levelA, category: CardCategory.objects, imageAssetPath: 'assets/images/level_a/rocket.webp', word: 'Rocket', persianWord: 'راکت'),
   const FlashcardModel(id: 'a49', level: BookLevel.levelA, category: CardCategory.objects, imageAssetPath: 'assets/images/level_a/slide.webp', word: 'Slide', persianWord: 'سرسره'),
-  const FlashcardModel(id: 'a50', level: BookLevel.levelA, category: CardCategory.objects, imageAssetPath: 'assets/images/level_a/star.webp', word: 'Star', persianWord: 'ستاره'),
-  const FlashcardModel(id: 'a51', level: BookLevel.levelA, category: CardCategory.objects, imageAssetPath: 'assets/images/level_a/twig.webp', word: 'Twig', persianWord: 'شاخه'),
+  const FlashcardModel(id: 'a50', level: BookLevel.levelA, category: CardCategory.objects, imageAssetPath: 'assets/images/level_a/star.webp', word: 'Star', persianWord: 'استار'),
+  const FlashcardModel(id: 'a51', level: BookLevel.levelA, category: CardCategory.objects, imageAssetPath: 'assets/images/level_a/twig.webp', word: 'Twig', persianWord: 'توئگ'),
 
   // ==================== LEVEL B ====================
   // اعضای بدن و جوارح (Level B)

@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; // 🟢 اضافه شده
+import 'package:flutter/services.dart';
 import '../models/flashcard_model.dart';
 import '../data/flashcard_data.dart';
 import 'fullscreen_card_screen.dart';
@@ -28,17 +28,52 @@ class CategoryItemsScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        systemOverlayStyle: SystemUiOverlayStyle.dark, // 🟢 تنظیم نوار وضعیت
-        title: Text(
-          categoryTitle,
-          style: const TextStyle(fontSize: 26, fontWeight: FontWeight.bold, color: Colors.blueGrey),
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
+        title: Directionality(
+          textDirection: TextDirection.rtl,
+          child: Text(
+            categoryTitle,
+            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+          ),
         ),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.blueGrey),
       ),
-      body: SafeArea( // 🟢 جلوگیری از تداخل محتوا
+      // 🟢 اضافه شدن دکمه شناور برای شروع سریع یادگیری این دسته
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          if (categoryCards.isNotEmpty) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => FullscreenCardScreen(
+                  cards: categoryCards,
+                  initialIndex: 0,
+                  categoryTitle: categoryTitle,
+                ),
+              ),
+            );
+          }
+        },
+        backgroundColor: Colors.green,
+        elevation: 6,
+        icon: const Icon(Icons.play_arrow_rounded, color: Colors.white, size: 32),
+        label: const Directionality(
+          textDirection: TextDirection.rtl,
+          child: Text(
+            'بزن بریم بازی!',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 16,
+            ),
+          ),
+        ),
+      ),
+      body: SafeArea(
         child: categoryCards.isEmpty
             ? const Center(
           child: Text(
@@ -50,7 +85,8 @@ class CategoryItemsScreen extends StatelessWidget {
           child: ConstrainedBox(
             constraints: BoxConstraints(maxWidth: maxWidth),
             child: GridView.builder(
-              padding: const EdgeInsets.all(20.0),
+              // 🟢 اضافه کردن پدینگ در پایین برای جلوگیری از تداخل با دکمه شناور
+              padding: const EdgeInsets.only(left: 20.0, right: 20.0, top: 20.0, bottom: 120.0),
               physics: const BouncingScrollPhysics(),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: screenWidth > 900 ? 5 : (screenWidth > 600 ? 4 : 2),

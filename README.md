@@ -1,63 +1,103 @@
-# 🌟 Play Time Flashcards
+# 🃏 PT Cards (Play Time)
+[🇮🇷 برای مطالعه توضیحات به زبان فارسی کلیک کنید](#-فارسی)
 
-**Play Time Flashcards** یک اپلیکیشن آموزشی شاد و تعاملی است که برای آموزش کلمات پایه انگلیسی به کودکان طراحی شده است. این برنامه با تمرکز بر یادگیری بصری و صوتی، محیطی جذاب برای شروع یادگیری زبان فراهم می‌کند.
+![Flutter](https://img.shields.io/badge/Flutter-3.44.0-blue?logo=flutter)
+![Dart](https://img.shields.io/badge/Dart-3.12.0-blue?logo=dart)
+![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20Windows%20%7C%20Web-lightgrey)
 
----
+A joyful and interactive English learning world designed specifically for children. PT Cards is a modern educational platform that transforms learning basic English vocabulary into a delightful experience through visual and audio methodologies.
 
-## ✨ ویژگی‌های کلیدی
+**🌐 Live Demo:** [playtime.hakimdev.ir](https://playtime.hakimdev.ir)
 
-*   **📚 انتخاب کتاب:** شامل دو سطح آموزشی استاندارد (Play Time A و Play Time B).
-*   **🗂 دسته‌بندی هوشمند:** فلش‌کارت‌ها در دسته‌های کاربردی مانند میوه‌ها، حیوانات، رنگ‌ها، لباس‌ها، اعداد و افعال تقسیم شده‌اند.
-*   **🔄 کارت‌های تعاملی (Flip Cards):** با لمس هر کارت، انیمیشن چرخش اجرا شده و معادل فارسی و انگلیسی کلمه نمایش داده می‌شود.
-*   **🔊 تلفظ صوتی (TTS):** استفاده از تکنولوژی Text-to-Speech برای پخش تلفظ صحیح کلمات با لهجه Native (فشرده‌سازی روی `en-US`).
-*   **🎨 طراحی مدرن:** استفاده از اصول Glassmorphism و رنگ‌های پاستلی شاد برای جذب کودکان.
-*   **📱 کاملاً Adaptive:** پشتیبانی کامل از انواع سایزهای صفحه (موبایل، تبلت و وب).
+## 📸 Screenshots
 
----
+| Categories & Flip Cards | Memory Match & Listen Match Games |
+| :---: | :---: |
+| <img src="لینک_تصویر_اول_را_اینجا_قرار_دهید" width="250" alt="Categories and Cards"> | <img src="لینک_تصویر_دوم_را_اینجا_قرار_دهید" width="250" alt="Interactive Games"> |
 
-## 🏗 معماری و استانداردهای فنی
+## ✨ Features
 
-این پروژه با رعایت بالاترین استانداردهای روز دنیای فلاتر و اندروید پیاده‌سازی شده است:
+| Category | Description |
+| :--- | :--- |
+| **📚 Rich Content** | Includes complete content from "Play Time A & B", 9 practical categories (fruits, animals, colors, etc.), and over 100 high-quality visual flashcards. |
+| **🎨 UI/UX for Kids** | Modern Glassmorphism design with joyful pastel colors, fully responsive across Mobile, Tablet, and Windows, featuring standard bilingual typography. |
+| **🔊 Smart TTS** | Native American (en-US) pronunciation, adjustable slow pace for better comprehension, and highly stable audio state management without overlaps. |
+| **🎮 Gamification** | Interactive 3D Flip Cards, visual Memory Match game with celebration effects, and Listen & Match audio challenge. |
+| **🛠 Technical Standards** | Blazing fast Native performance, smart desktop window constraints, and precise App Lifecycle management to optimize resources and battery. |
 
-*   **UI Framework:** Flutter (Material 3)
-*   **State Management:** Stateless/Stateful Widgets (پایه)
-*   **Android Standards:** 
-    *   Kotlin DSL (`.kts`)
-    *   Gradle `8.11.1`
-    *   Kotlin `2.2.20`
-*   **Design Pattern:** معماری تمیز (Clean Structure) برای مدیریت داده‌ها و ویجت‌ها.
-*   **Safety:** رعایت کامل `SafeArea` و مدیریت نوار وضعیت سیستم.
+## 🚀 Built With
 
----
+*   **Framework:** [Flutter](https://flutter.dev/) (Stable Channel)
+*   **Language:** Dart
+*   **Audio:** `flutter_tts`
+*   **Desktop:** `window_manager`
+*   **UI Assets:** Custom UI constraints & `confetti` for game rewards
 
-## 🛠 ابزارهای استفاده شده
+## 💻 Getting Started
 
-*   [`flutter_tts`](https://pub.dev/packages/flutter_tts): برای موتور صوتی.
-*   [`flutter_native_splash`](https://pub.dev/packages/flutter_native_splash): مدیریت صفحه انتظار.
+To run this project locally, follow these steps:
 
----
-
-## 🚀 نحوه اجرا
-
-۱. ابتدا پیش‌نیازهای فلاتر را روی سیستم خود نصب کنید.
-۲. مخزن را کلون کنید:
-   ```bash
+1. Clone the repository:
    git clone https://github.com/AHakimDev/playtime_flashcards.git
-   ```
-۳. پکیج‌ها را دریافت کنید:
-   ```bash
+
+2. Navigate to the project directory:
+   cd playtime_flashcards
+
+3. Install dependencies:
    flutter pub get
-   ```
-۴. برنامه را اجرا کنید:
-   ```bash
+
+4. Run the app:
    flutter run
-   ```
 
 ---
 
-## 📝 یادداشت توسعه‌دهنده
+<div dir="rtl" align="right">
 
-این پروژه بخشی از اکوسیستم آموزشی **Gene** است و با هدف ارتقای استانداردهای یادگیری زبان برای کودکان توسعه یافته است.
+## 🇮🇷 فارسی
+[🇬🇧 Read this in English](#-pt-cards-play-time)
 
----
-**توسعه داده شده توسط AHakimDev** 🌟
+دنیای شاد و تعاملی یادگیری زبان انگلیسی برای کودکان! اپلیکیشن PT Cards یک پلتفرم آموزشی مدرن است که با استفاده از متدهای بصری و صوتی، یادگیری کلمات پایه انگلیسی را برای کودکان به یک تجربه لذت‌بخش تبدیل می‌کند.
+
+**🌐 پیش‌نمایش زنده:** [playtime.hakimdev.ir](https://playtime.hakimdev.ir)
+
+## 📸 تصاویر محیط برنامه
+
+| دسته‌بندی‌ها و فلش‌کارت‌ها | محیط بازی‌های تعاملی |
+| :---: | :---: |
+| <img src="لینک_تصویر_اول_را_اینجا_قرار_دهید" width="250" alt="Categories and Cards"> | <img src="لینک_تصویر_دوم_را_اینجا_قرار_دهید" width="250" alt="Interactive Games"> |
+
+## ✨ ویژگی‌ها و امکانات
+
+| بخش | توضیحات |
+| :--- | :--- |
+| **📚 محتوای آموزشی غنی** | دو سطح استاندارد (Play Time A & B)، ۹ دسته‌بندی کاربردی (میوه‌ها، حیوانات، رنگ‌ها و...) و بیش از ۱۰۰ فلش‌کارت تصویری جذاب. |
+| **🎨 تجربه بصری (UI/UX)** | طراحی Glassmorphism با رنگ‌های پاستلی شاد برای کودکان، کاملاً انطباق‌پذیر (موبایل/تبلت/ویندوز) و تایپوگرافی استاندارد دوزبانه. |
+| **🔊 سیستم صوتی هوشمند** | تلفظ نیتیو با لهجه آمریکایی (en-US)، سرعت قابل تنظیم برای درک بهتر کودک، و پایداری صوتی بالا بدون تداخل صداها در تغییر صفحات. |
+| **🎮 یادگیری با بازی** | کارت‌های چرخشی تعاملی (سه‌بعدی)، بازی تقویت حافظه (Memory Match) با افکت‌های تشویقی، و بازی چالش تطبیق شنیداری (Listen Match). |
+| **🛠 استانداردهای فنی (Senior)** | عملکرد بسیار سریع بومی (Native)، مدیریت هوشمند ابعاد پنجره در خروجی دسکتاپ، و مدیریت دقیق چرخه حیات (Lifecycle) جهت بهینه‌سازی منابع. |
+
+## 🚀 تکنولوژی‌های استفاده شده
+
+*   **فریم‌ورک:** [فلاتر (Flutter)](https://flutter.dev/) (نسخه Stable)
+*   **زبان برنامه‌نویسی:** Dart
+*   **صدا:** `flutter_tts`
+*   **دسکتاپ:** `window_manager`
+*   **رابط کاربری:** محدودکننده‌های ابعاد ریسپانسیو و پکیج `confetti`
+
+## 💻 راهنمای اجرا
+
+برای اجرای این پروژه روی سیستم خود، مراحل زیر را دنبال کنید:
+
+۱. مخزن را کلون کنید:
+git clone https://github.com/AHakimDev/playtime_flashcards.git
+
+۲. وارد پوشه پروژه شوید:
+cd playtime_flashcards
+
+۳. پکیج‌های پیش‌نیاز را نصب کنید:
+flutter pub get
+
+۴. برنامه را اجرا کنید:
+flutter run
+
+</div>

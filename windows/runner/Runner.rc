@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.hakimdev.ir" "\0"
-            VALUE "FileDescription", "playtime_flashcards" "\0"
+            VALUE "FileDescription", "PT Cards" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "playtime_flashcards" "\0"
+            VALUE "InternalName", "PT Cards" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2026 com.hakimdev.ir. All rights reserved." "\0"
-            VALUE "OriginalFilename", "playtime_flashcards.exe" "\0"
-            VALUE "ProductName", "playtime_flashcards" "\0"
+            VALUE "OriginalFilename", "PT Cards.exe" "\0"
+            VALUE "ProductName", "PT Cards" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

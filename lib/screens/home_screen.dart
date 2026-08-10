@@ -1,9 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; // 🟢 اضافه شده
+import 'package:flutter/services.dart';
 import '../models/flashcard_model.dart';
 import '../data/flashcard_data.dart';
 import 'category_items_screen.dart';
+import 'memory_match_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   final BookLevel selectedLevel;
@@ -49,106 +50,158 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        systemOverlayStyle: SystemUiOverlayStyle.dark, // 🟢 اجبار به آیکون‌های تیره در استاتوس‌بار
-        title: Text(
-          bookTitle,
-          style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.blueGrey),
+        systemOverlayStyle: SystemUiOverlayStyle.dark,
+        title: Directionality(
+          textDirection: TextDirection.rtl,
+          child: Text(
+            bookTitle,
+            style: const TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+          ),
         ),
         centerTitle: true,
         backgroundColor: Colors.transparent,
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.blueGrey),
       ),
-      body: SafeArea( // 🟢 جلوگیری از تداخل محتوا با لبه‌های گوشی
-        child: Center(
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxWidth: maxWidth),
-            child: GridView.builder(
-              padding: const EdgeInsets.all(20.0),
-              physics: const BouncingScrollPhysics(),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: screenWidth > 900 ? 4 : (screenWidth > 600 ? 3 : 2),
-                crossAxisSpacing: 20.0,
-                mainAxisSpacing: 20.0,
-                childAspectRatio: screenWidth > 600 ? 1.25 : 1.05,
-              ),
-              itemCount: availableCategories.length,
-              itemBuilder: (context, index) {
-                final category = availableCategories[index];
-                final details = _getCategoryDetails(category);
-                final Color baseColor = details['color'];
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {
+          final levelCards = allFlashcards
+              .where((card) => card.level == selectedLevel)
+              .toList();
 
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => CategoryItemsScreen(
-                          selectedLevel: selectedLevel,
-                          category: category,
-                          categoryTitle: details['title'],
-                        ),
-                      ),
-                    );
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        colors: [
-                          baseColor.withOpacity(0.15),
-                          baseColor.withOpacity(0.35),
-                        ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
-                      borderRadius: BorderRadius.circular(28),
-                      border: Border.all(color: baseColor, width: 3),
-                      boxShadow: [
-                        BoxShadow(
-                          color: baseColor.withOpacity(0.2),
-                          blurRadius: 10,
-                          offset: const Offset(0, 6),
-                        ),
-                      ],
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => MemoryMatchScreen(
+                allLevelCards: levelCards,
+                levelTitle: bookTitle,
+              ),
+            ),
+          );
+        },
+        backgroundColor: Colors.orangeAccent,
+        elevation: 6,
+        icon: const Icon(Icons.style_rounded, color: Colors.white, size: 28),
+        label: const Text(
+          'بازی جفت‌یابی',
+          style: TextStyle(
+            color: Colors.white,
+            fontWeight: FontWeight.bold,
+            fontSize: 18,
+          ),
+        ),
+      ),
+      body: SafeArea(
+        // 🟢 تغییر ساختار برای حل مشکل دکمه شناور
+        child: Column(
+          children: [
+            Expanded(
+              child: Center(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(maxWidth: maxWidth),
+                  child: GridView.builder(
+                    padding: const EdgeInsets.all(20.0), // پدینگ استاندارد شد
+                    physics: const BouncingScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: screenWidth > 900 ? 4 : (screenWidth > 600 ? 3 : 2),
+                      crossAxisSpacing: 20.0,
+                      mainAxisSpacing: 20.0,
+                      childAspectRatio: screenWidth > 600 ? 1.25 : 1.05,
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          padding: const EdgeInsets.all(16),
+                    itemCount: availableCategories.length,
+                    itemBuilder: (context, index) {
+                      final category = availableCategories[index];
+                      final details = _getCategoryDetails(category);
+                      final Color baseColor = details['color'];
+
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => CategoryItemsScreen(
+                                selectedLevel: selectedLevel,
+                                category: category,
+                                categoryTitle: details['title'],
+                              ),
+                            ),
+                          );
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.all(8.0), // 🟢 پدینگ داخلی برای جلوگیری از چسبیدن به لبه‌ها
                           decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.7),
-                            shape: BoxShape.circle,
+                            gradient: LinearGradient(
+                              colors: [
+                                baseColor.withOpacity(0.15),
+                                baseColor.withOpacity(0.35),
+                              ],
+                              begin: Alignment.topLeft,
+                              end: Alignment.bottomRight,
+                            ),
+                            borderRadius: BorderRadius.circular(28),
+                            border: Border.all(color: baseColor, width: 3),
                             boxShadow: [
                               BoxShadow(
-                                color: baseColor.withOpacity(0.15),
-                                blurRadius: 6,
-                                offset: const Offset(0, 3),
+                                color: baseColor.withOpacity(0.2),
+                                blurRadius: 10,
+                                offset: const Offset(0, 6),
                               ),
                             ],
                           ),
-                          child: Text(
-                            details['icon'],
-                            style: const TextStyle(fontSize: 42),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              // 🟢 استفاده از Flexible و FittedBox برای واکنش‌گرا شدن آیکون
+                              Flexible(
+                                child: Container(
+                                  padding: const EdgeInsets.all(12),
+                                  decoration: BoxDecoration(
+                                    color: Colors.white.withOpacity(0.7),
+                                    shape: BoxShape.circle,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: baseColor.withOpacity(0.15),
+                                        blurRadius: 6,
+                                        offset: const Offset(0, 3),
+                                      ),
+                                    ],
+                                  ),
+                                  child: FittedBox(
+                                    fit: BoxFit.scaleDown,
+                                    child: Text(
+                                      details['icon'],
+                                      style: const TextStyle(fontSize: 42),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 8), // فاصله کمی کمتر شد
+                              // 🟢 استفاده از FittedBox برای جلوگیری از اورفلو شدن متن
+                              FittedBox(
+                                fit: BoxFit.scaleDown,
+                                child: Text(
+                                  details['title'],
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.bold,
+                                    color: baseColor.withBlue(baseColor.blue - 30 > 0 ? baseColor.blue - 30 : 0),
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        const SizedBox(height: 14),
-                        Text(
-                          details['title'],
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: baseColor.withBlue(baseColor.blue - 30 > 0 ? baseColor.blue - 30 : 0),
-                          ),
-                        ),
-                      ],
-                    ),
+                      );
+                    },
                   ),
-                );
-              },
+                ),
+              ),
             ),
-          ),
+            // 🟢 این بلوک خالی دقیقاً به اندازه دکمه شناور فضا اشغال می‌کند تا کارت‌ها زیر آن نروند
+            const SizedBox(height: 80),
+          ],
         ),
       ),
     );
