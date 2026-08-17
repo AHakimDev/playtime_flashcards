@@ -1,8 +1,10 @@
 import 'dart:math';
 import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+
 import '../models/flashcard_model.dart';
 
 class ListenMatchScreen extends StatefulWidget {
@@ -52,7 +54,8 @@ class _ListenMatchScreenState extends State<ListenMatchScreen> {
     Set<FlashcardModel> optionsSet = {_targetCard};
     while (optionsSet.length < optionsCount) {
       optionsSet.add(
-          widget.categoryCards[_random.nextInt(widget.categoryCards.length)]);
+        widget.categoryCards[_random.nextInt(widget.categoryCards.length)],
+      );
     }
 
     _currentOptions = optionsSet.toList();
@@ -151,35 +154,57 @@ class _ListenMatchScreenState extends State<ListenMatchScreen> {
               child: SingleChildScrollView(
                 physics: const BouncingScrollPhysics(),
                 padding: const EdgeInsets.only(
-                    top: 40, bottom: 24), // 🟢 افزایش فاصله از بالا
+                  top: 40,
+                  bottom: 24,
+                ), // 🟢 افزایش فاصله از بالا
                 child: ConstrainedBox(
-                  constraints:
-                      BoxConstraints(maxWidth: screenWidth > 800 ? 900 : 600),
+                  constraints: BoxConstraints(
+                    maxWidth: screenWidth > 800 ? 900 : 600,
+                  ),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      // 🟢 نمایش کلمه هدف برای تقویت یادگیری بصری همزمان با صوتی
+                      Text(
+                        _targetCard.word,
+                        style: const TextStyle(
+                          fontSize: 48,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blueGrey,
+                          letterSpacing: 2,
+                        ),
+                      ),
+                      const SizedBox(height: 20),
                       GestureDetector(
                         onTap: _playTargetWord,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(30),
                           child: BackdropFilter(
-                            filter:
-                                ImageFilter.blur(sigmaX: 10.0, sigmaY: 10.0),
+                            filter: ImageFilter.blur(
+                              sigmaX: 10.0,
+                              sigmaY: 10.0,
+                            ),
                             child: Container(
                               padding: const EdgeInsets.symmetric(
-                                  horizontal: 30, vertical: 20),
+                                horizontal: 30,
+                                vertical: 20,
+                              ),
                               decoration: BoxDecoration(
                                 color: Colors.white.withOpacity(0.3),
                                 borderRadius: BorderRadius.circular(30),
                                 border: Border.all(
-                                    color: Colors.white.withOpacity(0.5),
-                                    width: 2),
+                                  color: Colors.white.withOpacity(0.5),
+                                  width: 2,
+                                ),
                               ),
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: const [
-                                  Icon(Icons.volume_up_rounded,
-                                      size: 32, color: Colors.blueGrey),
+                                  Icon(
+                                    Icons.volume_up_rounded,
+                                    size: 32,
+                                    color: Colors.blueGrey,
+                                  ),
                                   SizedBox(width: 12),
                                   Text(
                                     'دوباره گوش کن',
@@ -203,19 +228,20 @@ class _ListenMatchScreenState extends State<ListenMatchScreen> {
                           physics: const NeverScrollableScrollPhysics(),
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: screenWidth > 700 ? 4 : 2,
-                            crossAxisSpacing: 16,
-                            mainAxisSpacing: 16,
-                            childAspectRatio: 0.9,
-                          ),
+                                crossAxisCount: screenWidth > 700 ? 4 : 2,
+                                crossAxisSpacing: 16,
+                                mainAxisSpacing: 16,
+                                childAspectRatio: 0.9,
+                              ),
                           itemCount: _currentOptions.length,
                           itemBuilder: (context, index) {
                             final option = _currentOptions[index];
                             final isSelected = _selectedIndex == index;
                             Color borderColor = Colors.transparent;
                             if (isSelected) {
-                              borderColor =
-                                  _isCorrect ? Colors.green : Colors.red;
+                              borderColor = _isCorrect
+                                  ? Colors.green
+                                  : Colors.red;
                             }
                             return GestureDetector(
                               onTap: () => _onCardTapped(index),
@@ -224,14 +250,16 @@ class _ListenMatchScreenState extends State<ListenMatchScreen> {
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(24),
-                                  border:
-                                      Border.all(color: borderColor, width: 4),
+                                  border: Border.all(
+                                    color: borderColor,
+                                    width: 4,
+                                  ),
                                   boxShadow: [
                                     BoxShadow(
                                       color: Colors.black.withOpacity(0.1),
                                       blurRadius: 10,
                                       offset: const Offset(0, 5),
-                                    )
+                                    ),
                                   ],
                                 ),
                                 child: ClipRRect(

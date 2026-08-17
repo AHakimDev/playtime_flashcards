@@ -11,9 +11,16 @@ A joyful and interactive English learning world designed specifically for childr
 
 ## 📸 Screenshots
 
-| Categories & Flip Cards | Memory Match & Listen Match Games |
-| :---: | :---: |
-| <img src="لینک_تصویر_اول_را_اینجا_قرار_دهید" width="250" alt="Categories and Cards"> | <img src="لینک_تصویر_دوم_را_اینجا_قرار_دهید" width="250" alt="Interactive Games"> |
+<p align="center">
+  <img src="screenshots/01-home-menu.webp" alt="Home Menu" width="250" style="margin-right: 10px;" />
+  <img src="screenshots/02-categories-menu.webp" alt="Categories Menu" width="250" style="margin-right: 10px;" />
+  <img src="screenshots/03-colors-list.webp" alt="Colors List" width="250" />
+</p>
+<p align="center">
+  <img src="screenshots/04-flashcard-view.webp" alt="Flashcard View" width="250" style="margin-right: 10px;" />
+  <img src="screenshots/05-word-audio-learning.webp" alt="Word Audio Learning" width="250" style="margin-right: 10px;" />
+  <img src="screenshots/06-color-game-quiz.webp" alt="Interactive Games" width="250" />
+</p>
 
 ## ✨ Features
 
@@ -59,12 +66,6 @@ To run this project locally, follow these steps:
 دنیای شاد و تعاملی یادگیری زبان انگلیسی برای کودکان! اپلیکیشن PT Cards یک پلتفرم آموزشی مدرن است که با استفاده از متدهای بصری و صوتی، یادگیری کلمات پایه انگلیسی را برای کودکان به یک تجربه لذت‌بخش تبدیل می‌کند.
 
 **🌐 پیش‌نمایش زنده:** [playtime.hakimdev.ir](https://playtime.hakimdev.ir)
-
-## 📸 تصاویر محیط برنامه
-
-| دسته‌بندی‌ها و فلش‌کارت‌ها | محیط بازی‌های تعاملی |
-| :---: | :---: |
-| <img src="لینک_تصویر_اول_را_اینجا_قرار_دهید" width="250" alt="Categories and Cards"> | <img src="لینک_تصویر_دوم_را_اینجا_قرار_دهید" width="250" alt="Interactive Games"> |
 
 ## ✨ ویژگی‌ها و امکانات
 
