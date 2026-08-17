@@ -14,10 +14,12 @@ A joyful and interactive English learning world designed specifically for childr
 <p align="center">
   <img src="screenshots/01-home-menu.webp" alt="Home Menu" width="250" style="margin-right: 10px;" />
   <img src="screenshots/02-categories-menu.webp" alt="Categories Menu" width="250" style="margin-right: 10px;" />
-  <img src="screenshots/03-colors-list.webp" alt="Colors List" width="250" />
 </p>
 <p align="center">
+  <img src="screenshots/03-colors-list.webp" alt="Colors List" width="250" />
   <img src="screenshots/04-flashcard-view.webp" alt="Flashcard View" width="250" style="margin-right: 10px;" />
+</p>
+<p align="center">
   <img src="screenshots/05-word-audio-learning.webp" alt="Word Audio Learning" width="250" style="margin-right: 10px;" />
   <img src="screenshots/06-color-game-quiz.webp" alt="Interactive Games" width="250" />
 </p>
